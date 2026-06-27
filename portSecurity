@@ -1,0 +1,19 @@
+limiting number of devices that can access network via an interface
+
+--possible penalities
+errordisabled state
+shutdown state
+
+--implementations(interface states)
+static--assigned by admin
+dynamic--allow whatever comes
+sticky--stick to the one it learns first
+
+interface fa0/1--///activate interface
+switchport mode access--///optional coz ports are access(not trunk) by default
+switchport security--///activate security on interface
+switchport port-security maximum 1--///max number of devices allowed on interface
+switchport port-security mac-address sticky/static
+switchport portsecurity violation protect/restrict/shutdown --///add violation->implementation
+
+show portsecurity interface fa0/1--///check security details on interface
